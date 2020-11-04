@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sweater Weather Documentation</title>
+  </head>
+  <body>
+    <section>
+      <h1>Welcome to Sweater Weather!</h1>
+      <p>Sweater Weather is a back-end application designed to provide REST API endpoints for a road trip planning weather app! To see the wireframes this application aims to satisfy, please visit our <a href="https://github.com/Kathybui732/sweater-weather">repo</a></p>
+    </section>
+
+    <section class="Getting Started">
+      <h3>Getting Started</h3>
+      <p>The base URL for the application is <b>https://sweater-weather-732.herokuapp.com/api/v1</b></p>
+      <p>Here are the following endpoints available from this application:</p>
+      <ul>
+        <li><b><pre><a href="#get-forecast">GET</a> /forecast</pre></b></li>
+        <li><b><pre><a href="#get-backgrounds">GET</a> /backgrounds</pre></b></li>
+        <li><b><pre><a href="#post-sessions">POST</a> /sessions</pre></b></li>
+        <li><b><pre><a href="#post-users">POST</a> /users</pre></b></li>
+        <li><b><pre><a href="#post-road_trip">POST</a> /road_trip</pre></b></li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Endpoint Examples</h3>
+        <section id="get-forecast" style="background-color:lightgrey;">
+          <p><b>GET /forecast?location=denver,co</b></p>
+          <p>Headers:
+            <ul>
+              <li>Content-Type: application/json</li>
+              <li>Accept: application/json</li>
+            </ul>
+          </p>
+          <p>Parameters
+            <ul>
+              <li>location: the location parameter requires a city and state and follows the following format denver,co</li>
+            </ul>
+          </p>
+          <p style="color:blue;">Response</p>
+          <pre><code>
+            {
+                "data": {
+                    "id": null,
+                    "type": "forecast",
+                    "attributes": {
+                        "location": {
+                            "city": "Denver",
+                            "state": "CO",
+                            "country": "US",
+                            "country_name": "United States"
+                        },
+                        "current_forecast": {
+                            "description": "scattered clouds",
+                            "current_weather": 51.91,
+                            "icon": "http://openweathermap.org/img/wn/03n@2x.png",
+                            "high": 73.02,
+                            "low": 51.91,
+                            "date_time": 1604472522,
+                            "date_time_formatted": "11:48 PM, November 03",
+                            "feels_like": 43.21,
+                            "humidity": 39,
+                            "visibility": 10000,
+                            "uv_index": 3.11,
+                            "sunrise": 1604410285,
+                            "sunset": 1604447729,
+                            "sunrise_time": " 6:31 AM",
+                            "sunset_time": " 4:55 PM"
+                        },
+                        "weekly_forecast": [
+                            {
+                                "description": "Clear",
+                                "icon": "http://openweathermap.org/img/wn/01d@2x.png",
+                                "date_time": 1604512800,
+                                "weekday": "Wednesday",
+                                "high": 53.78,
+                                "low": 73.06,
+                                "snow_percipitation": null,
+                                "rain_percipitation": null
+                            },
+                            {...}
+                        ],
+                        "hourly_forecast": [
+                            {
+                                "temperature": 54.57,
+                                "date_time": 1604473200,
+                                "date_time_formatted": "12 AM",
+                                "icon": "http://openweathermap.org/img/wn/04n@2x.png"
+                            },
+                            {...}
+                        ]
+                    }
+                }
+            }
+          </code></pre>
+        </section>
+        <br>
+        <section id="get-backgrounds" style="background-color:lightgrey;">
+          <p><b>GET /api/v1/backgrounds?location=denver,co</b></p>
+          <p>Headers:
+            <ul>
+              <li>Content-Type: application/json</li>
+              <li>Accept: application/json</li>
+            </ul>
+          </p>
+          <p>Parameters
+            <ul>
+              <li>location: the location parameter requires a city and state and follows the following format denver,co</li>
+            </ul>
+          </p>
+          <p style="color:blue;">Response</p>
+          <pre><code>
+            {
+              "data": {
+                "type": "image",
+                "id": null,
+                "image": {
+                  "location": "denver,co",
+                  "image_url": "https://pixabay.com/get/54e6d4444f50a814f1dc8460962930761c38d6ed534c704c7c2878dd954dc451_640.jpg",
+                  "credit": {
+                    "source": "pixabay.com",
+                    "author": "quinntheislander",
+                    "logo": "https://pixabay.com/static/img/logo_square.png"
+                  }
+                }
+              }
+            }
+          </code></pre>
+        </section>
+        <br>
+        <section id="post-sessions" style="background-color:lightgrey;">
+          <p><b>POST /sessions</b></p>
+          <p>Headers:
+            <ul>
+              <li>Content-Type: application/json</li>
+              <li>Accept: application/json</li>
+            </ul>
+          </p>
+          <p style="color:blue;">Body</p>
+          <pre><code>
+            {
+              "email": "whatever@example.com",
+              "password": "password"
+            }
+          </code></pre>
+          <p style="color:blue;">Response</p>
+          <pre><code>
+            {
+              "data": {
+                "type": "users",
+                "id": "1",
+                "attributes": {
+                  "email": "whatever@example.com",
+                  "api_key": "jgn983hy48thw9begh98h4539h4"
+                }
+              }
+            }
+          </code></pre>
+        </section>
+        <br>
+        <section id="post-users" style="background-color:lightgrey;">
+          <p><b>POST /users</b></p>
+          <p>Headers:
+            <ul>
+              <li>Content-Type: application/json</li>
+              <li>Accept: application/json</li>
+            </ul>
+          </p>
+          <p style="color:blue;">Body</p>
+          <pre><code>
+            {
+              "email": "whatever@example.com",
+              "password": "password",
+              "password_confirmation": "password"
+            }
+          </code></pre>
+          <p style="color:blue;">Response</p>
+          <pre><code>
+            {
+              "data": {
+                "type": "users",
+                "id": "1",
+                "attributes": {
+                  "email": "whatever@example.com",
+                  "api_key": "jgn983hy48thw9begh98h4539h4"
+                }
+              }
+            }
+          </code></pre>
+        </section>
+        <br>
+        <section id="post-road_trip" style="background-color:lightgrey;">
+          <p><b>POST /road_trip</b></p>
+          <p>Headers:
+            <ul>
+              <li>Content-Type: application/json</li>
+              <li>Accept: application/json</li>
+            </ul>
+          </p>
+          <p style="color:blue;">Body</p>
+          <pre><code>
+            {
+              "origin": "Denver,CO",
+              "destination": "Pueblo,CO",
+              "api_key": "jgn983hy48thw9begh98h4539h4"
+            }
+          </code></pre>
+          <p style="color:blue;">Response</p>
+          <pre><code>
+            {
+              "data": {
+                "id": null,
+                "type": "roadtrip",
+                "attributes": {
+                  "start_city": "Denver, CO",
+                  "end_city": "Estes Park, CO",
+                  "travel_time": "2 hours, 13 minutes"
+                  "weather_at_eta": {
+                    "temperature": 59.4,
+                    "conditions": "partly cloudy with a chance of meatballs"
+                  }
+                }
+              }
+            }
+          </code></pre>
+        </section>
+        <br>
+  </body>
+</html>
