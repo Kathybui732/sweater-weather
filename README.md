@@ -1,6 +1,6 @@
 # README
 
-Sweater Weather is a back-end application designed to satisfy wireframes presented by a front end team. The wireframes are provided below.
+Sweater Weather is a back-end application designed to satisfy wireframes presented by a front end team attempting to create a road trip planning weather app.
 
 This application designs endpoints
 
@@ -29,3 +29,10 @@ Rails 5.2.4
 
 * Endpoints
 Please visit the [production site](https://sweater-weather-732.herokuapp.com/) to view all endpoints!
+
+* Wireframes
+
+![Root](/app/assets/wireframes/root.png)
+![Sign Up](/app/assets/wireframes/sign_up.png)
+![Login](/app/assets/wireframes/login.png)
+![Road Trip](/app/assets/wireframes/road_trip.png)
